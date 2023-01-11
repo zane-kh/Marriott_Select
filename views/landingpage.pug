@@ -1,0 +1,40 @@
+extends base 
+
+block content 
+    //- h1 this is the landing page 
+
+    div 
+        each hotel, i in hotels 
+            div.display
+                div.display_1
+                    //- img(src="/images/banner.webp" style="width: 100%")
+                    img(src=`/images/hotels/${hotel.imageCover}` style="width: 100%" )
+                div.display_2
+                    h1(style="margin-right: 5rem") #{hotel.name} 
+                    <hr> 
+                div.display_3
+                    img.card__icon(src="/images/calendar-svgrepo-com.svg")
+                    span #{hotel.checkIn.toLocaleString(en-us, {month: "long", year:"numeric", day: "numeric"})}
+                div.display_4
+                    img.card__icon(src="/images/location-svgrepo-com.svg")
+                    span #{hotel.location.description}
+                div.display_5
+                    img.card__icon(src="/images/price-tag-svgrepo-com.svg")
+                    |
+                    |
+                    span $ #{hotel.price}
+                div.display_6 
+                    //- svg.card__icon
+                    //-   use(xlink:href="images/moon-svgrepo-com.svg")
+                    //- a(href="#")
+                    //-     i.fa-regular.fa-moon
+                    img.card__icon(src="/images/moon-svgrepo-com.svg")
+                    span #{hotel.duration} nights stay
+
+                div.display_7 
+                    span
+                        form(method="GET" action=`hotel/${hotel._id}?_method=GET` )
+                           button.detailsButton
+                              a(type="submit" href=`/hotel/${hotel.id}`) DETAILS
+                        //- a(href="#") DETAILS
+

@@ -1,0 +1,38 @@
+extends base
+
+block content 
+    //- h1 this is the signup page 
+
+    //- div 
+    //-     h2 Signup for a new account 
+    //-     form(action="" method="" class="signup")
+    //-         div
+    //-             label Name 
+    //-             input(type="text" id="name" required)
+    //-         div
+    //-             label Email address
+    //-             input(type="email" id="email" required)
+    //-         div
+    //-             label Password
+    //-             input(type="password" id="password" required)
+    //-         div
+    //-             label Confirm Password
+    //-             input(type="password" id="passwordConfirm" required)
+    //-         div 
+    //-             button Signup 
+
+    .login-form
+        form(class="signup")
+            h1(style="font-family: poppins") Signup
+            .content
+                .input-field
+                    input(type='name' id="name" placeholder='Name')
+                .input-field
+                    input(type='email' id="email" placeholder='Email')
+                .input-field
+                    input(type='password' id="password" placeholder='Password')
+                .input-field
+                    input(type='password' id="passwordConfirm" placeholder='Confirm Password')
+            .action
+                //- button Register
+                button Sign up

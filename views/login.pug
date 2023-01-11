@@ -1,0 +1,31 @@
+extends base
+
+block content 
+    //- h1 this is the login page 
+
+    //- div 
+    //-     h2 Log into your account 
+    //-     form(action="" method="" class="login")
+    //-         div
+    //-             label Email address
+    //-             input(type="email" id="email" required)
+    //-         div
+    //-             label Password
+    //-             input(type="password" id="password" required)
+    //-         div 
+    //-             button Login 
+
+    .login-form
+        form(class="login")
+            h1(style="font-family: poppins") Login
+            .content
+                .input-field(style="margin-bottom: 40px")    
+                    a(href="/auth/google" class="login-with-google-btn" style="text-decoration:none") Sign in with Google
+                //- .input-field
+                //-     input(type='email' id="email" placeholder='Email')
+                //- .input-field
+                //-     input(type='password' id="password" placeholder='Password')
+                //- a.link(href='#') Forgot Your Password?
+            .action
+                //- button Register
+                button Sign in

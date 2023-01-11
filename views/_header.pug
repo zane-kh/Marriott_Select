@@ -1,0 +1,17 @@
+header
+    nav.nav
+        div.nav__1     
+            a(href="/") 
+                img(src="/images/logo.png" alt="Marriott logo")
+        if user 
+            div.nav__2
+                a(href="/logout").nav_login Logout 
+            div.nav__3
+                a(href="/accountsPage")
+                    //- img(src=`/images/users/${user.photo}`)
+                    span.nav_login #{user.name.split(" ")}
+        else
+            div.nav__2
+                a(href="/login").nav_login Log In 
+            div.nav__3
+                a(href="/signup").nav_signup Sign Up

@@ -1,0 +1,37 @@
+mixin reviewCard(review)
+    div.reviews__card
+        div.reviews__avatar
+            img.reviews__avatar-img(src="/images/person-avatar.jpeg")
+            h6.reviews__user= review.user.name 
+
+        p.reviews__text= review.review 
+        div.reviews__rating
+            each star in [1, 2, 3, 4, 5]
+                if `${review.rating}` >= star
+                    img.reviews__star(src="/images/darkstar-svgrepo-com.svg")
+                else    
+                    img.reviews__star(src="/images/star-svgrepo-com.svg")
+        div(style="font: poppins;")
+            //- p= review._id    
+            br
+            
+            form(method="POST" action=`/reviews/${review._id}?_method=DELETE`)
+                div(style="text-align: center")
+                    button.review_Card_Account(type="submit" ) DELETE 
+            
+            br
+            br
+           
+            form(method="POST" action=`/reviews/${review._id}?_method=POST`) 
+                label Rating
+                input(type="number" min="1"  max="5" name="rating")
+                div     
+                    p
+                label Review
+                input(type="text" name="review")
+                div     
+                    p
+                div(style="text-align: center")
+                    button.review_Card_Account(type="submit") UPDATE
+
+//- value=`${review["_id"]}`

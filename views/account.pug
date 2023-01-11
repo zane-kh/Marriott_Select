@@ -1,0 +1,24 @@
+extends base 
+
+include _reviewCardAccount
+
+block content 
+    h1(style="margin-bottom: -30px; font-family: Poppins; padding-left: 5rem;") My Reviews 
+
+    - reviews = [...user.reviews]
+
+    section.section-reviews 
+        div.reviews
+            each review in reviews 
+                +reviewCard(review)
+
+               
+
+            
+
+
+    //- each review in reviews 
+    //-     p= review.rating 
+    //-     p= review.review
+
+        

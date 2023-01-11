@@ -1,0 +1,77 @@
+extends base
+
+include _reviewCard
+                    
+block content 
+    section.section-header
+        div.header__hero
+            div.header__hero-overlay &nbsp
+            img.header__hero-img(src=`/images/hotels/${hotel.imageCover}` style="width: 100%" )
+        
+        h1.heading-box 
+            div.heading-box-1 #{hotel.name}
+            div.heading-box-2 
+                img.card__icon(src="/images/clock-svgrepo-com.svg" style="fill: white") 
+                div &nbsp 
+                div &nbsp
+                span #{hotel.duration} days
+            div.heading-box-3
+                img.card__icon(src="/images/location-svgrepo-com.svg")
+                span #{hotel.location.description}
+              
+
+    section.section-info   
+        div.section-info-1
+            h3 RESERVATION
+            div(style="padding: 10px 10px")
+                img.card__icon(src="/images/location-svgrepo-com.svg")
+                span(style="padding: 10px 10px") ADDRESS: #{hotel.location.address}
+            div(style="padding: 10px 10px") 
+                img.card__icon(src="/images/price-tag-svgrepo-com.svg")   
+                span(style="padding: 10px 10px") PRICE: $#{hotel.price}
+            div(style="padding: 10px 10px")
+                img.card__icon(src="/images/moon-svgrepo-com.svg")    
+                span(style="padding: 10px 10px") DURATION: #{hotel.duration} nights
+            div(style="padding: 10px 10px") 
+                img.card__icon(src="/images/star-svgrepo-com.svg")    
+                span(style="padding: 10px 10px") RATING: #{hotel.ratingsAverage} / 5
+            div(style="padding: 10px 10px")
+                img.card__icon(src="/images/calendar-svgrepo-com.svg")
+                span(style="padding: 10px 10px") CHECK-IN: #{hotel.checkIn.toLocaleString("en-gb")}
+            
+        div.section-info-2
+            h3 HOTEL OWNER(S)
+        div.section-info-3
+            h3(style="letter-spacing: 3px") #{hotel.summary.toUpperCase()}
+            p(style="padding: 10px 20px") #{hotel.description}
+
+    section.section-pictures
+        each img, i in hotel.images  
+            div.picture-box
+                img.picture-box__img(src=`/images/hotels/${img}` class=`picture-box__img-${i+1}`)
+
+    section.section-reviews 
+        div.reviews
+            each review in hotel.reviews 
+                +reviewCard(review)
+    if user
+        div   
+            section 
+                form.section-reviewForm(method="POST" action="/reviews")
+                    div.section-reviewForm-1
+                        label Rating
+                    div.section-reviewForm-2
+                        input(type="number" name="rating" min="1" max="5" style="width: 100%; height: 40px; font-size: 25px")
+                    div.section-reviewForm-3 
+                        label(style="font-size: 30px") Review
+                    div.section-reviewForm-4
+                        textarea(style="width: 100%; font-family: helvetica" name="review" rows='5')
+                    input(name="hotel" value=`${hotel.id}` type="hidden")
+                    div.section-reviewForm-5
+                        button(type="submit" value="Add Review") Submit
+    else    
+        div
+            
+
+
+
