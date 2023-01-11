@@ -25,16 +25,20 @@ const server = app.listen(port, () => {
   console.log(`App running on port ${port}`);
 });
 
-//connect to atlas database
-const DB = process.env.DATABASE.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD
-);
+// //connect to atlas database
+// const DB = process.env.DATABASE.replace(
+//   "<PASSWORD>",
+//   process.env.DATABASE_PASSWORD
+// );
 
-mongoose.connect(DB).then(() => {
-  // console.log(connection.connections);
-  console.log("DB connection successful!");
-});
+mongoose
+  .connect(
+    "mongodb+srv://zane-k:RmnKlID2xSYZHOqT@cluster0.eriwn.mongodb.net/marriott-select?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    // console.log(connection.connections);
+    console.log("DB connection successful!");
+  });
 
 //unhandled rejections from asynchronous code, globally handle
 process.on("unhandledRejection", (err) => {
