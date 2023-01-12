@@ -51,7 +51,7 @@ router.get(
 router.get("/logout", function (req, res) {
   req.logout();
   req.session.destroy();
-  res.redirect("/", viewController.getLandingPage);
+  res.redirect("https://marriott-select.onrender.com/");
 });
 
 module.exports = router;
