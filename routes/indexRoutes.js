@@ -51,7 +51,7 @@ router.get(
 router.get("/logout", function (req, res) {
   req.logout();
   req.session.destroy();
-  res.redirect("/");
+  res.redirect("/", viewController.getLandingPage);
 });
 
 module.exports = router;
