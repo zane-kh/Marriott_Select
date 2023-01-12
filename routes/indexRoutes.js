@@ -48,10 +48,13 @@ router.get(
 );
 
 // OAuth logout route
-router.get("/logout", function (req, res) {
-  req.logout();
-  req.session.destroy();
-  res.redirect("https://marriott-select.onrender.com/");
+router.get("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
 });
 
 module.exports = router;
